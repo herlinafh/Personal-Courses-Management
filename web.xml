@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0"
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" >
+        <servlet>
+                <servlet-name>hi</servlet-name>
+                <servlet-class>myworks.HelloWorld</servlet-class>
+                <load-on-startup>1</load-on-startup>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>hi</servlet-name>
+                <url-pattern>/hiServlet</url-pattern>
+        </servlet-mapping>
+
+        <filter>
+           <filter-name>LogFilter</filter-name>
+           <filter-class>myworks.LogFilter</filter-class>
+           <init-param>
+                <param-name>test-param</param-name>
+                <param-value>Initialization Parameter</param-value>
+           </init-param>
+        </filter>
+        <filter-mapping>
+           <filter-name>LogFilter</filter-name>
+           <url-pattern>/protect/*</url-pattern>
+        </filter-mapping>
+
+        <display-name>Servlet Login using Remember Me features</display-name>
+        <!-- session expires in 3 minutes -->
+        <session-config>
+            <session-timeout>3</session-timeout>
+        </session-config>
+        <welcome-file-list>
+                <!-- <welcome-file>LoginCookiesForm.jsp</welcome-file> -->
+                <welcome-file>LoginPage.jsp</welcome-file>
+        </welcome-file-list>
+
+  <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>myworks.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+
+</web-app>
